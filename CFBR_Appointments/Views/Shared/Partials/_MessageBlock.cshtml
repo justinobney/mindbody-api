@@ -1,0 +1,41 @@
+﻿@{
+    string SuccessMessage = (string)TempData["SuccessMessage"];
+    string ErrorMessage = (string)TempData["ErrorMessage"];
+    string InfoMessage = (string)TempData["InfoMessage"];
+}
+
+@if (!string.IsNullOrEmpty(SuccessMessage))
+{ 
+    <div class="row">
+        <div class="span12">
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                @Html.Raw(SuccessMessage)
+            </div>
+        </div>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(InfoMessage))
+{ 
+    <div class="row">
+        <div class="span12">
+            <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                @Html.Raw(InfoMessage)
+            </div>
+        </div>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(ErrorMessage))
+{ 
+    <div class="row">
+        <div class="span12">
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                @Html.Raw(ErrorMessage)
+            </div>
+        </div>
+    </div>
+}

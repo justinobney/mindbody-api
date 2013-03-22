@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://api.mindbodyonline.com/0_5/ClassService.asmx?wsdl" docRef="http://api.mindbodyonline.com/0_5/ClassService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://api.mindbodyonline.com/0_5/ClassService.asmx" xmlns:q1="http://clients.mindbodyonline.com/api/0_5" binding="q1:Class_x005F_x0020_ServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CFBR_Appointments", "CFBR_Appointments\CFBR_Appointments.csproj", "{FEEA1BFC-2EA4-4DE9-82A8-645C25F007A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mindbody_API", "Minbody_API\Mindbody_API.csproj", "{6E3146A7-0672-452D-96D2-722E530674C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CFBR_Models", "CFBR_Models\CFBR_Models.csproj", "{A9387CF2-6E3E-450F-810E-30B66F05EF24}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEEA1BFC-2EA4-4DE9-82A8-645C25F007A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEEA1BFC-2EA4-4DE9-82A8-645C25F007A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEEA1BFC-2EA4-4DE9-82A8-645C25F007A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEEA1BFC-2EA4-4DE9-82A8-645C25F007A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E3146A7-0672-452D-96D2-722E530674C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E3146A7-0672-452D-96D2-722E530674C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E3146A7-0672-452D-96D2-722E530674C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E3146A7-0672-452D-96D2-722E530674C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9387CF2-6E3E-450F-810E-30B66F05EF24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9387CF2-6E3E-450F-810E-30B66F05EF24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9387CF2-6E3E-450F-810E-30B66F05EF24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9387CF2-6E3E-450F-810E-30B66F05EF24}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

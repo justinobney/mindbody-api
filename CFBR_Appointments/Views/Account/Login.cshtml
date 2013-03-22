@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Please Sign In";
+}
+
+<div class="row" id="signin_form">
+    <div class="span4 offset4 well">
+        <legend>Please Sign In</legend>
+        @using (Html.BeginForm()) {
+            <input type="text" id="username" class="span4" name="username" placeholder="Username">
+            <input type="password" id="password" class="span4" name="password" placeholder="Password">
+            <label class="checkbox">
+                @Html.CheckBox("remember")
+                Remember Me
+            </label>
+            <button type="submit" name="submit" class="btn btn-primary btn-block">Sign in</button>
+        }
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        var util = util || {};
+
+        util.cookie = {
+            create: function (name, value, days) {
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    var expires = "; expires=" + date.toGMTString();
+                } else var expires = "";
+                document.cookie = name + "=" + value + expires + "; path=/";
+            },
+
+            read: function (name) {
+                var nameEQ = name + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            },
+
+            erase: function (name) {
+                createCookie(name, "", -1);
+            }
+        }
+
+        if (util.cookie.read('remember') && util.cookie.read('remember').indexOf('true') > -1) {
+            setTimeout(function () {
+                var cookie_val = util.cookie.read('remember').split('|');
+                $('#username').val(cookie_val[1]);
+                $('#password').val(cookie_val[2]);
+            }, 1000);
+        };
+    </script>    
+}

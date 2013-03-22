@@ -1,0 +1,147 @@
+﻿@model CFBR_Appointments.ViewModels.SchedulePageViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Main hero unit for a primary marketing message or call to action -->
+@*<div class="row">
+    <div class="span12">
+        <center>
+            <img src="http://crossfitbr.com/wp-content/themes/rockwell_v1.7.1/mobile-landing-page/crossfit-br.jpg" alt="CrossFit BR" style="width:50%;max-width:300px;">
+        </center>
+    </div>
+</div>*@
+
+<style type="text/css" >
+    .table tr th {
+        width: 33%;
+    }
+</style>
+
+<div class="row">
+    <div class="span6">
+        <h3>Your Schedule</h3>
+        <h4>@DateTime.Now.ToString("ddd, MMM d") &nbsp;&nbsp;&mdash;&nbsp;&nbsp; @DateTime.Now.AddDays(6).ToString("ddd, MMM d")</h4>
+        @if (Model.ScheduledClasses.Length > 0)
+        {
+            <table class="table table-striped table-condensed">
+                <tr>
+                    <th>Time</th>
+                    <th class="align-center">Sign Ups</th>
+                    <th></th>
+                </tr>
+
+            @foreach (var item in Model.ScheduledClasses)
+            { 
+                <tr>
+                    <td>
+                        <span>
+                            @item.StartTime.Value.ToString("ddd, MMM d")
+                        </span>
+                        <span class="text-info">
+                            @item.StartTime.Value.ToShortTimeString()
+                        </span>
+                    </td>
+                    <td class="align-center">
+                        <span class="badge badge-inverse">@item.SignupCount</span>
+                    </td>
+                    <td>
+                        @if (!item.Cancelled)
+                        {
+                            <a href="@Url.HttpRouteUrl("Default", new { controller = "Home", action = "Cancel", id = item.ID })" 
+                                onclick="" class="btn btn-mini btn-danger pull-right" data-loading-text="loading ...">
+                                Cancel <i class="icon-white icon-thumbs-down"></i>
+                            </a>
+                        }
+                        else
+                        { 
+                            <a href="#canceled" class="btn btn-mini btn-danger pull-right disabled">
+                                CANCELLED
+                            </a>
+                        }                        
+                        <div class="clearfix"></div>
+                    </td>
+                </tr>
+            }
+        </table>
+        }
+        else
+        { 
+            <div class="alert alert-info">
+                <i class=" icon-thumbs-down"></i>
+                &nbsp;
+                0 classes scheduled.
+            </div>
+        }
+    </div>
+
+    <div class="span6">
+        <div>
+            <h3 class="pull-left">Available Classes</h3>
+            <div class="pull-right" style="padding-top: 15px;">
+                <div class="btn-group" id="available_class_nav">
+                  <button class="btn btn-mini prev" onclick="class_nav.prev(this);">
+                      <i class="icon-chevron-left"></i> Prev
+                  </button>
+                  <button class="btn btn-mini next" onclick="class_nav.next(this);">
+                      Next <i class="icon-chevron-right"></i>
+                  </button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        @foreach (var group in Model.AvailableClassesGrouped)
+        {
+            <div class="available-day">
+                <h4>@group.First().StartTime.Value.ToString("ddd, MMM d")</h4>
+                <table class="table table-striped table-condensed">
+                        <tr>
+                            <th>Time</th>
+                            <th class="align-center">Sign Ups</th>
+                            <th></th>
+                        </tr>
+
+                    @foreach (var item in group)
+                    { 
+                        <tr>
+                            <td>
+                                @item.StartTime.Value.ToShortTimeString()
+                            </td>
+                            <td class="align-center">
+                                <span class="badge badge-inverse">@item.SignupCount</span>
+                            </td>
+                            <td>
+                                @if (!item.Cancelled)
+                                {
+                                    <a href="@Url.HttpRouteUrl("Default", new { controller = "Home", action = "Schedule", id = item.ID })" 
+                                        onclick="" class="btn btn-mini btn-primary pull-right" data-loading-text="loading ...">
+                                        Schedule <i class="icon-white icon-chevron-right"></i>
+                                    </a>
+                                }
+                                else
+                                { 
+                                    <a href="#canceled" class="btn btn-mini btn-danger pull-right disabled">
+                                        CANCELLED
+                                    </a>
+                                }                        
+                                <div class="clearfix"></div>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/class_nav.js")"></script>
+    <script>
+        class_nav.init();
+
+        $('[data-loading-text]').click(function (e) {
+            $(e.target).button('loading');
+        })
+    </script>
+}
